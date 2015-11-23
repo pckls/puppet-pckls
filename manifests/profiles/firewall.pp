@@ -1,25 +1,12 @@
 class pckls::profiles::firewall {
 
-    include stdlib
-
-    # Base puppetlabs-firewall module setup
-    class { '::firewall':
-        stage => 'setup'
+    Firewall {
+      before  => Class['pckls::profiles::firewall::post'],
+      require => Class['pckls::profiles::firewall::pre'],
     }
 
-    # Base Accept Rules
-    class { 'pckls::profiles::firewall::pre':
-        stage => 'setup'
-    }
-
-    # Base Drop Rules
-    class { 'pckls::profiles::firewall::post':
-        stage => 'deploy'
-    }
-
-    # Purge Undefined Resources
-    resources { 'firewall':
-        purge => true,
-    }
+    include ::firewall
+    include pckls::profiles::firewall::pre
+    include pckls::profiles::firewall::post
 
 }

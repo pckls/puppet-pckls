@@ -1,5 +1,9 @@
 class pckls::profiles::firewall::post {
 
+    Firewall {
+        before => undef,
+    }
+
     firewall { '998 LOG ALL v4':
         before => undef,
         burst  => '3',

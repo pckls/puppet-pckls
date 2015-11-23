@@ -1,5 +1,7 @@
 class pckls::profiles::firewall {
 
+    include stdlib
+
     # Base puppetlabs-firewall module setup
     class { '::firewall':
         stage => 'setup'

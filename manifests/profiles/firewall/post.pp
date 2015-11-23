@@ -1,6 +1,6 @@
 class pckls::profiles::firewall::post {
 
-    firewall { '998 log all-all-v4':
+    firewall { '998 LOG ALL v4':
         before => undef,
         burst  => '3',
         jump   => 'LOG',
@@ -8,14 +8,14 @@ class pckls::profiles::firewall::post {
         proto  => 'all',
     }
 
-    firewall { '999 drop all-all-v4':
+    firewall { '999 DROP ALL v4':
         before => undef,
         action => drop,
         chain  => 'INPUT',
         proto  => 'all',
     }
 
-    firewall { '998 log all-all-v6':
+    firewall { '998 LOG ALL v6':
         before   => undef,
         burst    => '3',
         jump     => 'LOG',
@@ -24,7 +24,7 @@ class pckls::profiles::firewall::post {
         provider => 'ip6tables',
     }
 
-    firewall { '999 drop all-all-v6':
+    firewall { '999 DROP ALL v6':
         before   => undef,
         action   => drop,
         chain    => 'INPUT',
